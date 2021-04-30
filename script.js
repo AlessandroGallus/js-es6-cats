@@ -3,7 +3,7 @@ $(function(){
         {
             name:'Guppy',
             gender:'M',
-            eta:'1',
+            eta:'3,5',
             color:'#B734EB'
         },
         {
@@ -27,7 +27,7 @@ $(function(){
         {
             name:'Leo',
             gender:'M',
-            eta:'13',
+            eta:'7',
             color:'#808080'
         },
         {
@@ -39,39 +39,49 @@ $(function(){
         {
             name:'Luna',
             gender:'F',
-            eta:'17',
+            eta:'2',
             color:'#FF7F50'
         }    
     ];
-    let i=0;
-    function generatoreLi(colore, nome){
-        console.log(colore, nome)
+
+    const pink = '#FFC0CB';
+    const blue = '#0000FF';
+    
+    const nuovi_gatti = (colore_gatto, nome, rosa, blu, genere, opacity) =>{
+        let colore_genere = (genere == 'M') ? blu : rosa; 
         let html = 
         `
         <li>
-            <i class="fas fa-paw" style ="color:${colore}"></i>
+            <i class="fas fa-paw" style ="color:${colore_gatto};"></i>
+            <i class="fas fa-certificate" style ="color:${colore_genere}; opacity:${opacity}"></i>
+            <span>${nome}</span>
+        </li>
+        `
+        if(genere == 'M'){
+            $('#m ul').append(html)
+        }else if (genere == 'F'){
+            $('#f ul').append(html)
+        }
+    }
+
+    const generatoreLi = (colore, nome) =>{
+        let html = 
+        `
+        <li>
+            <i class="fas fa-paw" style ="color:${colore};"></i>
             <span>${nome}</span>
         </li>
         `
         return(html);
     }
 
-    /* const generatoreLi = (colore, nome) =>{
-        console.log(colore, nome)
-        let html = 
-        `
-        <li>
-            <i class="fas fa-paw" style ="color:${colore}"></i>
-            <span>${nome}</span>
-        </li>
-        `
-        return(html);
-    } */
-
     gatti.forEach((gatto) => {
-        console.log(generatoreLi(gatti.color, gatti.name));
-        console.log(gatto)
+        let opacity = gatto.eta/10;
+        $('#gatti ul').append(generatoreLi(gatto.color, gatto.name))
+        nuovi_gatti(gatto.color, gatto.name, pink, blue, gatto.gender, opacity);
+        
     })
+
 })
 
 

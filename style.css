@@ -27,8 +27,21 @@
     width:100%;
     text-align: center;
     line-height: 40px;
+    margin-bottom: 30px;
 }
 .wrapper-gatti{
     height: 90%;
     width:100%;
+}
+.wrapper-gatti ul{
+    list-style: none;
+    font-size: 22px;
+}
+.wrapper-gatti ul li{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+span{
+    min-width: 100px;
 }
